@@ -2,6 +2,7 @@
 /**
  * This is the template for generating the model class of a specified table.
  */
+
 use yii\helpers\Inflector;
 
 /* @var $this yii\web\View */
@@ -143,7 +144,7 @@ class <?= $className ?>Base extends <?= '\\' . ltrim($generator->baseClass, '\\'
     <?php foreach ($relations as $name => $relation): ?>
 
     /**
-     * @return \yii\db\ActiveQuery
+     * @return \yii\db\ActiveQuery|<?= $relation[1];?>
      */
     public function get<?= $name ?>()
     {
