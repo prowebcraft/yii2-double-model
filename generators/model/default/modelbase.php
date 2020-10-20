@@ -119,7 +119,7 @@ class <?= $className ?>Base extends <?= '\\' . ltrim($generator->baseClass, '\\'
     {
         <?php
         if ($type == 'datetime' || $type == 'date') {
-            echo '$time = is_string('.$variable.') ? strtotime('.$variable.') : is_numeric('.$variable.') ? '.$variable.' : time();' . "\n\t\t";
+            echo '$time = is_string('.$variable.') ? strtotime('.$variable.') : (is_numeric('.$variable.') ? '.$variable.' : time());' . "\n\t\t";
             if ($type == 'datetime') {
                 echo $variable . ' = date("Y-m-d H:i:s", $time);' . "\n\t\t";
             }
