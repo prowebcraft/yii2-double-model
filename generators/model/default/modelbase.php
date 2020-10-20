@@ -72,7 +72,7 @@ class <?= $className ?>Base extends <?= '\\' . ltrim($generator->baseClass, '\\'
     {
         return '<?= $generator->generateTableName($tableName) ?>';
     }
-    <?php if ($generator->db !== 'db'): ?>
+<?php if ($generator->db !== 'db'): ?>
 
     /**
      * @return \yii\db\Connection the database connection used by this AR class.
@@ -111,7 +111,7 @@ class <?= $className ?>Base extends <?= '\\' . ltrim($generator->baseClass, '\\'
         $type = $column->dbType;
     ?>
 /**
-     * Set <?=$column->name;?> property.<?=($column->comment ? "\n    * {$column->comment}" : '') ."\n"?>
+     * Set <?=$column->name;?> property.<?=($column->comment ? "\n     * {$column->comment}" : '') ."\n"?>
      * @param <?="{$column->phpType} {$variable}\n"?>
      * @return $this
      */
@@ -119,12 +119,12 @@ class <?= $className ?>Base extends <?= '\\' . ltrim($generator->baseClass, '\\'
     {
         <?php
         if ($type == 'datetime' || $type == 'date') {
-            echo '$time = is_string('.$variable.') ? strtotime('.$variable.') : (is_numeric('.$variable.') ? '.$variable.' : time());' . "\n\t\t";
+            echo '$time = is_string('.$variable.') ? strtotime('.$variable.') : (is_numeric('.$variable.') ? '.$variable.' : time());' . "\n        ";
             if ($type == 'datetime') {
-                echo $variable . ' = date("Y-m-d H:i:s", $time);' . "\n\t\t";
+                echo $variable . ' = date("Y-m-d H:i:s", $time);' . "\n        ";
             }
             if ($type == 'date') {
-                echo $variable . ' = date("Y-m-d", $time);' . "\n\t\t";
+                echo $variable . ' = date("Y-m-d", $time);' . "\n        ";
             }
         }
         ?>$this-><?=$column->name;?> = <?=$variable;?>;
@@ -132,7 +132,7 @@ class <?= $className ?>Base extends <?= '\\' . ltrim($generator->baseClass, '\\'
     }
 
     /**
-     * Get <?=$column->name;?> property.<?=($column->comment ? "\n    * {$column->comment}" : '') ."\n"?>
+     * Get <?=$column->name;?> property.<?=($column->comment ? "\n     * {$column->comment}" : '') ."\n"?>
      * @return <?=$column->phpType."\n";?>
      */
     public function get<?=$methodName;?>()
